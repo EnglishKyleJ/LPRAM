@@ -1,0 +1,22 @@
+﻿<ContentDialog
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:jpg_dump"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:IO="using:System.IO" x:Name="CdJpgDumpMain"
+    x:Class="jpg_dump.ContentDialog1"
+    mc:Ignorable="d"
+    Title="JPG Loader"
+    PrimaryButtonText="Select File"
+    SecondaryButtonText="Exit"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick" BorderThickness="5" RequestedTheme="Dark" BorderBrush="#FFD71400">
+    <Grid x:Name="GridBirdInfo" HorizontalAlignment="Left" Height="523" VerticalAlignment="Top" Width="295">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="229*"/>
+            <ColumnDefinition Width="66*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="ImageBird" HorizontalAlignment="Left" Height="274" Margin="10,73,0,0" VerticalAlignment="Top" Width="275" Grid.ColumnSpan="2"/>
+    </Grid>
+</ContentDialog>

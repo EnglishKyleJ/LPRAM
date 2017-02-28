@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,6 +26,26 @@ namespace jpg_dump
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            if (typeof(BlankPage1).ToString() == "")
+            {
+                Debug.WriteLine("No blank page"); 
+            }
+
+            Frame.Navigate(typeof(BlankPage1), null);
+        }
+
+        //protected override void OnNavigatedTo(NavigationEventArgs e)
+        //{
+        //    this.Frame.Navigate(typeof(ContentDialog1), nu);
+        //}
+
+        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        {
+            throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
     }
 }
