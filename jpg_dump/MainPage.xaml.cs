@@ -11,8 +11,10 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage.Pickers;
+using Windows.Storage;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -26,6 +28,25 @@ namespace jpg_dump
         public MainPage()
         {
             this.InitializeComponent();
+            imageOpenPicker = new FileOpenPicker();
+        }
+
+        private async void button1_Click(object sender, RoutedEventArgs e)
+        {
+            imageOpenPicker.ViewMode = PickerViewMode.Thumbnail;
+            imageOpenPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            imageOpenPicker.FileTypeFilter.Add(".jpg");
+            imageOpenPicker.FileTypeFilter.Add(".png");
+
+            // Pick one file to display
+            StorageFile selectedFile = await imageOpenPicker.PickSingleFileAsync();
+            if (selectedFile != null)
+            {
+                var stream = await selectedFile.OpenAsync(FileAccessMode.Read);
+                var image = new BitmapImage();
+                image.SetSource(stream);
+                image1.Source = image;
+            }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -47,5 +68,7 @@ namespace jpg_dump
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
+
+        FileOpenPicker imageOpenPicker;
     }
 }
