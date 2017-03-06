@@ -28,24 +28,24 @@ namespace jpg_dump
         public MainPage()
         {
             this.InitializeComponent();
-            imageOpenPicker = new FileOpenPicker();
         }
 
         private async void button1_Click(object sender, RoutedEventArgs e)
         {
+            FileOpenPicker imageOpenPicker = new FileOpenPicker();
             imageOpenPicker.ViewMode = PickerViewMode.Thumbnail;
             imageOpenPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
             imageOpenPicker.FileTypeFilter.Add(".jpg");
             imageOpenPicker.FileTypeFilter.Add(".png");
-
+            
             // Pick one file to display
             StorageFile selectedFile = await imageOpenPicker.PickSingleFileAsync();
             if (selectedFile != null)
             {
-                var stream = await selectedFile.OpenAsync(FileAccessMode.Read);
-                var image = new BitmapImage();
-                image.SetSource(stream);
-                image1.Source = image;
+                var fileStream = await selectedFile.OpenAsync(FileAccessMode.Read);
+                var bitmapImage = new BitmapImage();
+                bitmapImage.SetSource(fileStream);
+                image1.Source = bitmapImage;
             }
         }
 
@@ -59,16 +59,11 @@ namespace jpg_dump
             Frame.Navigate(typeof(BlankPage1), null);
         }
 
-        //protected override void OnNavigatedTo(NavigationEventArgs e)
-        //{
-        //    this.Frame.Navigate(typeof(ContentDialog1), nu);
-        //}
-
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
-        FileOpenPicker imageOpenPicker;
+        
     }
 }

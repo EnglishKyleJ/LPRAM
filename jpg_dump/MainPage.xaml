@@ -6,12 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="ImageStyle1" TargetType="Image"/>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Image x:Name="image" HorizontalAlignment="Left" Height="137" Margin="192,84,0,0" VerticalAlignment="Top" Width="242"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="506,483,0,0" VerticalAlignment="Top" Click="button_Click"/>
         <Image x:Name="image1" HorizontalAlignment="Left" Height="393" Margin="506,10,0,0" VerticalAlignment="Top" Width="508" Source="Assets/SplashScreen.png"/>
-        <Button x:Name="button1" Content="Open Picture" HorizontalAlignment="Left" Height="33" Margin="612,483,0,0" VerticalAlignment="Top" Width="230"/>
+        <Button x:Name="button1" Content="Open Picture" HorizontalAlignment="Left" Height="33" Margin="506,408,0,0" VerticalAlignment="Top" Width="230" Click="button1_Click"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="492" Margin="10,89,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="451"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="74" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="451"/>
 
     </Grid>
 </Page>
