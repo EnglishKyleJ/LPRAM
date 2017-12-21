@@ -49,16 +49,6 @@ namespace jpg_dump
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            if (typeof(BlankPage1).ToString() == "")
-            {
-                Debug.WriteLine("No blank page"); 
-            }
-
-            Frame.Navigate(typeof(BlankPage1), null);
-        }
-
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
