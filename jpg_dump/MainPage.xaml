@@ -10,18 +10,22 @@
         <Style x:Key="ImageStyle1" TargetType="Image"/>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1014" BorderThickness="10" BorderBrush="DarkRed" HorizontalAlignment="Right">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="256*"/>
-            <ColumnDefinition Width="256*"/>
+            <ColumnDefinition Width="506*"/>
+            <ColumnDefinition Width="506*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="320*"/>
-            <RowDefinition Height="320*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Image x:Name="image1" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Assets/SplashScreen.png" Margin="10"/>
-        <Button x:Name="button1" Content="Open Picture" HorizontalAlignment="Left" Height="33" Margin="0.4,274.8,0,0" VerticalAlignment="Top" Width="230" Click="button1_Click" Grid.Row="1" Grid.Column="1"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="492" Margin="10,89,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="451" Grid.RowSpan="2"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="74" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="451"/>
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1" Margin="0,155,-10.4,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="320*"/>
+                <RowDefinition Height="320*"/>
+            </Grid.RowDefinitions>
+            <Image x:Name="image1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Assets/SplashScreen.png"  Grid.Row="0" Margin="10,37,26,35" Width="470"/>
+            <Button x:Name="button1" Content="Open Picture" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200"  Click="button1_Click" Grid.Row="1"/>
+        </Grid>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="599" Margin="20,20,0,0" TextWrapping="Wrap" Text="JPEG Metadata" VerticalAlignment="Top" Width="482"/>
     </Grid>
 </Page>
