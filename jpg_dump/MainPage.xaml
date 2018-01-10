@@ -20,10 +20,10 @@
         </Grid.RowDefinitions>
         <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1" Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Image x:Name="image1" HorizontalAlignment="Center" VerticalAlignment="Top" Source="Assets/SplashScreen.png"  Grid.Row="0" Margin="10" Width="470"/>
+            <Image x:Name="image1" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" Margin="10" Width="470"/>
             <Button x:Name="button1" Content="Open Picture" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200"  Click="button1_Click" Grid.Row="1" Margin="20"/>
         </Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Stretch" Height="Auto" Margin="20" TextWrapping="Wrap" Text="JPEG Metadata" VerticalAlignment="Stretch" Width="300"/>
