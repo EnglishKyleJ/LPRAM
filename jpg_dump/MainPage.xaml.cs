@@ -51,7 +51,7 @@ namespace jpg_dump
         {
             var image = new Image();
             var bitmapImage = new BitmapImage();
-            bitmapImage.UriSource = new Uri(image.BaseUri, "TestImages/IMG_2731.jpg");
+            bitmapImage.UriSource = new Uri(image.BaseUri, "TestImages/location.JPG");
             image1.Source = bitmapImage;
         }
 
@@ -81,64 +81,83 @@ namespace jpg_dump
         {
             ImageProperties props = await imageFile.Properties.GetImagePropertiesAsync();
 
-            var requests = new System.Collections.Generic.List<string>();
-            //requests.Add("System.Photo.Title");
-            //requests.Add("System.Photo.DateTaken");
-            requests.Add("System.Photo.Orientation");
-            requests.Add("System.Photo.Aperture");
-            //requests.Add("System.Photo.Latitude");
-            //requests.Add("System.Photo.Longitude");
+            //var requests = new System.Collections.Generic.List<string>();
+            //requests.Add("title");
+            //requests.Add("dateTaken");
+            //requests.Add("orientation");
+            //requests.Add("aperture");
+            //requests.Add("latitude");
+            //requests.Add("longitude");
 
-            IDictionary<string, object> retrievedProps = await props.RetrievePropertiesAsync(requests);
-
-            //string title;
-            //if (retrievedProps.ContainsKey("System.Photo.Title"))
+            //IDictionary<string, object> retrievedProps = await props.RetrievePropertiesAsync(requests);
+            StringBuilder metadataText = new StringBuilder();
+            //foreach (KeyValuePair<string, object> entry in retrievedProps)
             //{
-            //title = (string)retrievedProps["System.Photo.Title"];
+
             //}
 
-            title = props.Title;
-            if (title == null)
+            metadataText.AppendLine("File Name: " + imageFile.Name);
+            metadataText.AppendLine("Title: " + props.Title);
+            metadataText.AppendLine("Camera: " + props.CameraModel);
+            metadataText.AppendLine("Date: " + props.DateTaken.ToString());
+
+            if (props.Latitude.HasValue)
             {
-                title = "Title not supported";
+                Debug.WriteLine("Latitude has value a value");
+                metadataText.AppendLine("Latitude: " + props.Latitude.Value);
             }
+            else
+            {
+                Debug.WriteLine("Latitude has no value");
+                metadataText.AppendLine("Latitude: No Data");
+            }
+
+            if (props.Longitude.HasValue)
+            {
+                metadataText.AppendLine("Longitude: " + props.Longitude.Value);
+            }
+            else
+            {
+                metadataText.AppendLine("Longitude: No Data");
+            }
+
+
+
+            textBlock.Text = metadataText.ToString();
+
+            Debug.WriteLine("Debug line");
+
+            //string title;
+            //if (retrievedProps.ContainsKey("Title"))
+            //{
+            //    title = (string)retrievedProps["Title"];
+            //}
 
             //DateTimeOffset date;
             //if (retrievedProps.ContainsKey("System.Photo.DateTaken"))
             //{
-            // date = (DateTimeOffset)retrievedProps["System.Photo.DateTaken"];
+            //    date = (DateTimeOffset)retrievedProps["System.Photo.DateTaken"];
             //}
-            date = props.DateTaken;
-            if (date == null)
-            {
-                //
-            }
 
-            //ushort orientation;
-            if (retrievedProps.ContainsKey("System.Photo.Orientation"))
-            {
-                orientation = (ushort)retrievedProps["System.Photo.Orientation"];
-            }
+            //if (retrievedProps.ContainsKey("System.Photo.Orientation"))
+            //{
+            //    orientation = (ushort)retrievedProps["System.Photo.Orientation"];
+            //}
 
-            //double aperture;
-            if (retrievedProps.ContainsKey("System.Photo.Aperture"))
-            {
-                aperture = (double)retrievedProps["System.Photo.Aperture"];
-            }
+            //if (retrievedProps.ContainsKey("System.Photo.Aperture"))
+            //{
+            //    aperture = (double)retrievedProps["System.Photo.Aperture"];
+            //}
 
             //if (retrievedProps.ContainsKey("System.Photo.Latitude"))
             //{
             //    latitude = (double)retrievedProps["System.Photo.Latitude"];
             //}
-            latitude = props.Latitude;
-
 
             //if (retrievedProps.ContainsKey("System.Photo.Longitude"))
             //{
-            //longitude = (double)retrievedProps["System.Photo.Longitude"];
+            //    longitude = (double)retrievedProps["System.Photo.Longitude"];
             //}
-            longitude = props.Longitude;
-
         }
 
         private void FillText()
