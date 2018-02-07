@@ -1,9 +1,9 @@
-# Birds
-Bird Identification Recognition and Detection System
+# LPRAM
+License Plate Reader and Mapper
 
 Goals:
-1. Take pictures of birds with cell phone
-2. Use GPS info and accelerometer info to determine precise position of bird
-3. Use machine learning and image processing techniques to identify and label bird
-4. Keep metrics of bird types
-5. Post bird metrics to online mapping tool
+1. Take pictures of license plates with location enabled cell phone camera
+2. Use machine learning and image processing techniques to identify license plates in pictures
+3. Use natural language processing to read license plate number and state from plate photo
+4. Use GPS info to plot license plate on a map
+5. Allow users to email photo to a monitored email account that gets automatically processed
